@@ -50,4 +50,4 @@
         mode: "0600"
       delegate_to: localhost
       become: false
-  when: algo_provider != "local"
+  when: agpl_provider != "local"
