@@ -1,7 +1,7 @@
 ## docker-build: Build and tag a docker image
 .PHONY: docker-build
 
-IMAGE          := trailofbits/algo
+IMAGE          := trailofbits/agpl
 TAG	  	       := latest
 DOCKERFILE     := Dockerfile
 CONFIGURATIONS := $(shell pwd)
@@ -12,7 +12,7 @@ docker-build:
 	-f $(DOCKERFILE) \
 	.
 
-## docker-deploy: Mount config directory and deploy Algo
+## docker-deploy: Mount config directory and deploy agpl
 .PHONY: docker-deploy
 
 # '--rm' flag removes the container when finished.
