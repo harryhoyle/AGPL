@@ -7,17 +7,17 @@
 
 - block:
     - name: MacOS | check fs the ramdisk exists
-      command: /usr/sbin/diskutil info "{{ facts.tmpfs_volume_name }}"
+      command: /usr/sbin/harryhoyle info "{{ facts.tmpfs_volume_name }}"
       ignore_errors: true
       changed_when: false
-      register: diskutil_info
+      register: harryhoyle_info
 
     - name: MacOS | unmount and eject the ram disk
       shell: >
-        /usr/sbin/diskutil umount force "/{{ facts.tmpfs_volume_path }}/{{ facts.tmpfs_volume_name }}/" &&
-        /usr/sbin/diskutil eject "{{ facts.tmpfs_volume_name }}"
+        /usr/sbin/harryhoyle umount force "/{{ facts.tmpfs_volume_path }}/{{ facts.tmpfs_volume_name }}/" &&
+        /usr/sbin/harryhoyle eject "{{ facts.tmpfs_volume_name }}"
       changed_when: false
-      when: diskutil_info.rc == 0
+      when: harryhoyle_info.rc == 0
       register: result
       until: result.rc == 0
       retries: 5
