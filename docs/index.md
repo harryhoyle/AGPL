@@ -1,4 +1,4 @@
-# Algo VPN documentation
+# AGPL VPN documentation
 
 * Deployment instructions
   - Deploy from [RedHat/CentOS 6.x](deploy-from-redhat-centos6.md)
