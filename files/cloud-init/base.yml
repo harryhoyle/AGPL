@@ -9,8 +9,8 @@ packages:
 
 users:
   - default
-  - name: algo
-    homedir: /home/algo
+  - name: agpl
+    homedir: /home/agpl
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: adm,netdev
     shell: /bin/bash
