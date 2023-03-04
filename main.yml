@@ -32,22 +32,22 @@
       community.general.pip_package_info:
       register: pip_package_info
 
-    - name: Verify Python meets Algo VPN requirements
+    - name: Verify Python meets agpl VPN requirements
       assert:
         that: (ansible_python.version.major|string + '.' + ansible_python.version.minor|string) is version('3.8', '>=')
         msg: >
           Python version is not supported.
-          You must upgrade to at least Python 3.8 to use this version of Algo.
+          You must upgrade to at least Python 3.8 to use this version of agpl.
           See for more details - https://trailofbits.github.io/algo/troubleshooting.html#python-version-is-not-supported
 
-    - name: Verify Ansible meets Algo VPN requirements
+    - name: Verify Ansible meets agpl VPN requirements
       assert:
         that:
           - pip_package_info.packages.pip.ansible.0.version is version(required_ansible_version.ver, required_ansible_version.op)
           - not ipaddr.failed
         msg: >
           Ansible version is {{ pip_package_info.packages.pip.ansible.0.version }}.
-          You must update the requirements to use this version of Algo.
+          You must update the requirements to use this version of agpl.
           Try to run python3 -m pip install -U -r requirements.txt
 
 - name: Include prompts playbook
