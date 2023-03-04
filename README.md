@@ -3,7 +3,7 @@
 [![Instagram](https://img.shields.io/instagram/url/https/instagram.com/fold_left.svg?style=social&label=Follow%20%40ha11y._.hoyle)](https://instagram.com/ha11y._.hoyle)
 [![](https://github.com/harryhoyle)](https://github.com/harryhoyle)
 
-Algo VPN is a set of Ansible scripts that simplify the setup of a personal WireGuard and IPsec VPN. It uses the most secure defaults available and works with common cloud providers. See our [release announcement](https://blog.trailofbits.com/2016/12/12/meet-algo-the-vpn-that-works/) for more information.
+AGPLis a set of Ansible scripts that simplify the setup of a personal WireGuard and IPsec VPN. It uses the most secure defaults available and works with common cloud providers.
 
 ## Features
 
@@ -25,22 +25,22 @@ Algo VPN is a set of Ansible scripts that simplify the setup of a personal WireG
 * Does not claim to provide anonymity or censorship avoidance
 * Does not claim to protect you from the [FSB](https://en.wikipedia.org/wiki/Federal_Security_Service), [MSS](https://en.wikipedia.org/wiki/Ministry_of_State_Security_(China)), [DGSE](https://en.wikipedia.org/wiki/Directorate-General_for_External_Security), or [FSM](https://en.wikipedia.org/wiki/Flying_Spaghetti_Monster)
 
-## Deploy the Algo Server
+## Deploy the AGPL Server
 
-The easiest way to get an Algo server running is to run it on your local system or from [Google Cloud Shell](docs/deploy-from-cloudshell.md) and let it set up a _new_ virtual machine in the cloud for you.
+The easiest way to get an AGPL server running is to run it on your local system or from [Google Cloud Shell](docs/deploy-from-cloudshell.md) and let it set up a _new_ virtual machine in the cloud for you.
 
-1. **Setup an account on a cloud hosting provider.** Algo supports [DigitalOcean](https://m.do.co/c/4d7f4ff9cfe4) (most user friendly), [Amazon Lightsail](https://aws.amazon.com/lightsail/), [Amazon EC2](https://aws.amazon.com/), [Vultr](https://www.vultr.com/), [Microsoft Azure](https://azure.microsoft.com/), [Google Compute Engine](https://cloud.google.com/compute/), [Scaleway](https://www.scaleway.com/), [DreamCompute](https://www.dreamhost.com/cloud/computing/), [Linode](https://www.linode.com), or other OpenStack-based cloud hosting, [Exoscale](https://www.exoscale.com) or other CloudStack-based cloud hosting,  or [Hetzner Cloud](https://www.hetzner.com/).
+1. **Setup an account on a cloud hosting provider.** AGPL supports [DigitalOcean](https://m.do.co/c/4d7f4ff9cfe4) (most user friendly), [Amazon Lightsail](https://aws.amazon.com/lightsail/), [Amazon EC2](https://aws.amazon.com/), [Vultr](https://www.vultr.com/), [Microsoft Azure](https://azure.microsoft.com/), [Google Compute Engine](https://cloud.google.com/compute/), [Scaleway](https://www.scaleway.com/), [DreamCompute](https://www.dreamhost.com/cloud/computing/), [Linode](https://www.linode.com), or other OpenStack-based cloud hosting, [Exoscale](https://www.exoscale.com) or other CloudStack-based cloud hosting,  or [Hetzner Cloud](https://www.hetzner.com/).
 
-2. **Get a copy of Algo.** The Algo scripts will be installed on your local system. There are two ways to get a copy:
+2. **Get a copy of AGPL.** The AGPL scripts will be installed on your local system. There are two ways to get a copy:
 
-    - Download the [ZIP file](https://github.com/trailofbits/algo/archive/master.zip). Unzip the file to create a directory named `algo-master` containing the Algo scripts.
+    - Download the [ZIP file](https://github.com/harryhoyle/AGPL/archive/master.zip). Unzip the file to create a directory named `AGPL-master` containing the AGPL scripts.
 
-    - Use `git clone` to create a directory named `algo` containing the Algo scripts:
+    - Use `git clone` to create a directory named `AGPL` containing the Algo scripts:
         ```bash
-        git clone https://github.com/trailofbits/algo.git
+        git clone https://github.com/harryhoyle/AGPL.git
         ```
 
-3. **Install Algo's core dependencies.** Algo requires that **Python 3.8 or later** and at least one supporting package are installed on your system.
+3. **Install AGPL's core dependencies.** AGPL requires that **Python 3.8 or later** and at least one supporting package are installed on your system.
 
     - **macOS:** Catalina (10.15) and higher includes Python 3 as part of the optional Command Line Developer Tools package. From Terminal run:
 
@@ -64,9 +64,9 @@ The easiest way to get an Algo server running is to run it on your local system 
             sudo dnf install -y python3-virtualenv
             ```
 
-    - **Windows:** Use the Windows Subsystem for Linux (WSL) to create your own copy of Ubuntu running under Windows from which to install and run Algo. See the [Windows documentation](docs/deploy-from-windows.md) for more information.
+    - **Windows:** Use the Windows Subsystem for Linux (WSL) to create your own copy of Ubuntu running under Windows from which to install and run AGPL. See the [Windows documentation](docs/deploy-from-windows.md) for more information.
 
-4. **Install Algo's remaining dependencies.** You'll need to run these commands from the Algo directory each time you download a new copy of Algo. In a Terminal window `cd` into the `algo-master` (ZIP file) or `algo` (`git clone`) directory and run:
+4. **Install AGPL's remaining dependencies.** You'll need to run these commands from the AGPL directory each time you download a new copy of AGPL. In a Terminal window `cd` into the `AGPL-master` (ZIP file) or `AGPL` (`git clone`) directory and run:
     ```bash
     python3 -m virtualenv --python="$(command -v python3)" .env &&
       source .env/bin/activate &&
@@ -75,9 +75,9 @@ The easiest way to get an Algo server running is to run it on your local system 
     ```
     On Fedora first run `export TMPDIR=/var/tmp`, then add the option `--system-site-packages` to the first command above (after `python3 -m virtualenv`). On macOS install the C compiler if prompted.
 
-5. **Set your configuration options.** Open the file `config.cfg` in your favorite text editor. Specify the users you wish to create in the `users` list. Create a unique user for each device you plan to connect to your VPN. If you want to add or delete users later, you **must** select `yes` at the `Do you want to retain the keys (PKI)?` prompt during the server deployment. You should also review the other options before deployment, as changing your mind about them later [may require you to deploy a brand new server](https://github.com/trailofbits/algo/blob/master/docs/faq.md#i-deployed-an-algo-server-can-you-update-it-with-new-features).
+5. **Set your configuration options.** Open the file `config.cfg` in your favorite text editor. Specify the users you wish to create in the `users` list. Create a unique user for each device you plan to connect to your VPN. If you want to add or delete users later, you **must** select `yes` at the `Do you want to retain the keys (PKI)?` prompt during the server deployment. You should also review the other options before deployment, as changing your mind about them later.
 
-6. **Start the deployment.** Return to your terminal. In the Algo directory, run `./algo` and follow the instructions. There are several optional features available, none of which are required for a fully functional VPN server. These optional features are described in greater detail in [here](docs/deploy-from-ansible.md).
+6. **Start the deployment.** Return to your terminal. In the AGPL directory, run `./agpl` and follow the instructions. There are several optional features available, none of which are required for a fully functional VPN server. These optional features are described in greater detail in [here](docs/deploy-from-ansible.md).
 
 That's it! You will get the message below when the server deployment process completes. Take note of the p12 (user certificate) password and the CA key in case you need them later, **they will only be displayed this time**.
 
@@ -85,7 +85,7 @@ You can now set up clients to connect to your VPN. Proceed to [Configure the VPN
 
 ```
     "#                          Congratulations!                            #"
-    "#                     Your Algo server is running.                     #"
+    "#                     Your AGPL server is running.                     #"
     "#    Config files and certificates are in the ./configs/ directory.    #"
     "#              Go to https://whoer.net/ after connecting               #"
     "#        and ensure that all your traffic passes through the VPN.      #"
@@ -97,17 +97,17 @@ You can now set up clients to connect to your VPN. Proceed to [Configure the VPN
 
 ## Configure the VPN Clients
 
-Certificates and configuration files that users will need are placed in the `configs` directory. Make sure to secure these files since many contain private keys. All files are saved under a subdirectory named with the IP address of your new Algo VPN server.
+Certificates and configuration files that users will need are placed in the `configs` directory. Make sure to secure these files since many contain private keys. All files are saved under a subdirectory named with the IP address of your new AGPL VPN server.
 
 ### Apple Devices
 
-WireGuard is used to provide VPN services on Apple devices. Algo generates a WireGuard configuration file, `wireguard/<username>.conf`, and a QR code, `wireguard/<username>.png`, for each user defined in `config.cfg`.
+WireGuard is used to provide VPN services on Apple devices. AGPL generates a WireGuard configuration file, `wireguard/<username>.conf`, and a QR code, `wireguard/<username>.png`, for each user defined in `config.cfg`.
 
 On iOS, install the [WireGuard](https://itunes.apple.com/us/app/wireguard/id1441195209?mt=8) app from the iOS App Store. Then, use the WireGuard app to scan the QR code or AirDrop the configuration file to the device.
 
 On macOS Mojave or later, install the [WireGuard](https://itunes.apple.com/us/app/wireguard/id1451685025?mt=12) app from the Mac App Store. WireGuard will appear in the menu bar once you run the app. Click on the WireGuard icon, choose **Import tunnel(s) from file...**, then select the appropriate WireGuard configuration file.
 
-On either iOS or macOS, you can enable "Connect on Demand" and/or exclude certain trusted Wi-Fi networks (such as your home or work) by editing the tunnel configuration in the WireGuard app. (Algo can't do this automatically for you.)
+On either iOS or macOS, you can enable "Connect on Demand" and/or exclude certain trusted Wi-Fi networks (such as your home or work) by editing the tunnel configuration in the WireGuard app. (AGPL can't do this automatically for you.)
 
 Installing WireGuard is a little more complicated on older version of macOS. See [Using macOS as a Client with WireGuard](docs/client-macos-wireguard.md).
 
@@ -149,7 +149,7 @@ Depending on the platform, you may need one or multiple of the following files.
 
 ## Setup an SSH Tunnel
 
-If you turned on the optional SSH tunneling role, then local user accounts will be created for each user in `config.cfg` and SSH authorized_key files for them will be in the `configs` directory (user.ssh.pem). SSH user accounts do not have shell access, cannot authenticate with a password, and only have limited tunneling options (e.g., `ssh -N` is required). This ensures that SSH users have the least access required to setup a tunnel and can perform no other actions on the Algo server.
+If you turned on the optional SSH tunneling role, then local user accounts will be created for each user in `config.cfg` and SSH authorized_key files for them will be in the `configs` directory (user.ssh.pem). SSH user accounts do not have shell access, cannot authenticate with a password, and only have limited tunneling options (e.g., `ssh -N` is required). This ensures that SSH users have the least access required to setup a tunnel and can perform no other actions on the AGPL server.
 
 Use the example command below to start an SSH tunnel by replacing `<user>` and `<ip>` with your own. Once the tunnel is setup, you can configure a browser or other application to use 127.0.0.1:1080 as a SOCKS proxy to route traffic through the Algo server:
 
@@ -159,25 +159,25 @@ ssh -D 127.0.0.1:1080 -f -q -C -N <user>@algo -i configs/<ip>/ssh-tunnel/<user>.
 
 ## SSH into Algo Server
 
-Your Algo server is configured for key-only SSH access for administrative purposes. Open the Terminal app, `cd` into the `algo-master` directory where you originally downloaded Algo, and then use the command listed on the success message:
+Your Algo server is configured for key-only SSH access for administrative purposes. Open the Terminal app, `cd` into the `AGPL-master` directory where you originally downloaded AGPL, and then use the command listed on the success message:
 
 ```
 ssh -F configs/<ip>/ssh_config <hostname>
 ```
 
-where `<ip>` is the IP address of your Algo server. If you find yourself regularly logging into the server then it will be useful to load your Algo ssh key automatically. Add the following snippet to the bottom of `~/.bash_profile` to add it to your shell environment permanently:
+where `<ip>` is the IP address of your Algo server. If you find yourself regularly logging into the server then it will be useful to load your AGPL ssh key automatically. Add the following snippet to the bottom of `~/.bash_profile` to add it to your shell environment permanently:
 
 ```
 ssh-add ~/.ssh/algo > /dev/null 2>&1
 ```
 
-Alternatively, you can choose to include the generated configuration for any Algo servers created into your SSH config. Edit the file `~/.ssh/config` to include this directive at the top:
+Alternatively, you can choose to include the generated configuration for any AGPL servers created into your SSH config. Edit the file `~/.ssh/config` to include this directive at the top:
 
 ```
 Include <algodirectory>/configs/*/ssh_config
 ```
 
-where `<algodirectory>` is the directory where you cloned Algo.
+where `<algodirectory>` is the directory where you cloned AGPL.
 
 ## Adding or Removing Users
 
@@ -185,14 +185,14 @@ _If you chose to save the CA key during the deploy process,_ then Algo's own scr
 
 1. Update the `users` list in your `config.cfg`
 2. Open a terminal, `cd` to the algo directory, and activate the virtual environment with `source .env/bin/activate`
-3. Run the command: `./algo update-users`
+3. Run the command: `./agpl update-users`
 
-After this process completes, the Algo VPN server will contain only the users listed in the `config.cfg` file.
+After this process completes, the AGPL VPN server will contain only the users listed in the `config.cfg` file.
 
 ## Additional Documentation
 * [FAQ](docs/faq.md)
 * [Troubleshooting](docs/troubleshooting.md)
-* How Algo uses [Firewalls](docs/firewalls.md)
+* How AGPL uses [Firewalls](docs/firewalls.md)
 
 ### Setup Instructions for Specific Cloud Providers
 * Configure [Amazon EC2](docs/cloud-amazon-ec2.md)
@@ -228,38 +228,21 @@ If you've read all the documentation and have further questions, [create a new d
 
 ## Endorsements
 
-> I've been ranting about the sorry state of VPN svcs for so long, probably about
-> time to give a proper talk on the subject. TL;DR: use Algo.
-
--- [Kenn White](https://twitter.com/kennwhite/status/814166603587788800)
-
 > Before picking a VPN provider/app, make sure you do some research
-> https://research.csiro.au/ng/wp-content/uploads/sites/106/2016/08/paper-1.pdf ... – or consider Algo
+> https://research.csiro.au/ng/wp-content/uploads/sites/106/2016/08/paper-1.pdf ... – or consider AGPL
 
--- [The Register](https://twitter.com/TheRegister/status/825076303657177088)
+> AGPL is really easy and secure.
 
-> Algo is really easy and secure.
+Chirs Taylor
+> I played around with AGPL VPN, a set of scripts that let you set up a VPN in the cloud in very little time, even if you don’t know much about development. I’ve got to say that I was quite impressed with Trail of Bits’ approach.
 
--- [the grugq](https://twitter.com/thegrugq/status/786249040228786176)
-
-> I played around with Algo VPN, a set of scripts that let you set up a VPN in the cloud in very little time, even if you don’t know much about development. I’ve got to say that I was quite impressed with Trail of Bits’ approach.
-
--- [Romain Dillet](https://twitter.com/romaindillet/status/851037243728965632) for [TechCrunch](https://techcrunch.com/2017/04/09/how-i-made-my-own-vpn-server-in-15-minutes/)
-
+Ryan Laweson
 > If you’re uncomfortable shelling out the cash to an anonymous, random VPN provider, this is the best solution.
 
--- [Thorin Klosowski](https://twitter.com/kingthor) for [Lifehacker](http://lifehacker.com/how-to-set-up-your-own-completely-free-vpn-in-the-cloud-1794302432)
-
 ## Support Algo VPN
-[![Flattr](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=kxw60j&url=https%3A%2F%2Fgithub.com%2Ftrailofbits%2Falgo)
-[![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CYZZD39GXUJ3E)
-[![Patreon](https://img.shields.io/badge/back_on-patreon-red.svg)](https://www.patreon.com/algovpn)
-[![Bountysource](https://img.shields.io/bountysource/team/trailofbits/activity.svg)](https://www.bountysource.com/teams/trailofbits)
+[![Patreon](https://img.shields.io/badge/back_on-patreon-red.svg)](https://www.patreon.com/harryhoyle)
+
 
 All donations support continued development. Thanks!
 
-* We accept donations via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CYZZD39GXUJ3E), [Patreon](https://www.patreon.com/algovpn), and [Flattr](https://flattr.com/submit/auto?fid=kxw60j&url=https%3A%2F%2Fgithub.com%2Ftrailofbits%2Falgo).
-* Use our [referral code](https://m.do.co/c/4d7f4ff9cfe4) when you sign up to Digital Ocean for a $10 credit.
-* We also accept and appreciate contributions of new code and bugfixes via Github Pull Requests.
-
-Algo is licensed and distributed under the AGPLv3. If you want to distribute a closed-source modification or service based on Algo, then please consider <a href="mailto:opensource@trailofbits.com">purchasing an exception</a> . As with the methods above, this will help support continued development.
+Algo is licensed and distributed under the AGPLv3. If you want to distribute a closed-source modification or service based on AGPL, then please consider <a href="mailto:harryewardhoyle@gmail.com">purchasing an exception</a> . As with the methods above, this will help support continued development.
