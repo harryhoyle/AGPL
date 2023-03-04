@@ -8,16 +8,16 @@ which sudo || until \
   sleep 3
 done
 
-getent passwd algo || useradd -m -d /home/algo -s /bin/bash -G adm -p '!' algo
+getent passwd AGPL || useradd -m -d /home/agpl -s /bin/bash -G adm -p '!' AGPL
 
-(umask 337 && echo "algo ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/10-algo-user)
+(umask 337 && echo "agpl ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/10-agpl-user)
 
 cat <<EOF >/etc/ssh/sshd_config
 {{ lookup('template', 'files/cloud-init/sshd_config') }}
 EOF
 
-test -d /home/algo/.ssh || sudo -u algo mkdir -m 0700 /home/algo/.ssh
-echo "{{ lookup('file', '{{ SSH_keys.public }}') }}" | (sudo -u algo tee /home/algo/.ssh/authorized_keys && chmod 0600 /home/algo/.ssh/authorized_keys)
+test -d /home/agpl/.ssh || sudo -u algo mkdir -m 0700 /home/agpl/.ssh
+echo "{{ lookup('file', '{{ SSH_keys.public }}') }}" | (sudo -u algo tee /home/algo/.ssh/authorized_keys && chmod 0600 /home/agpl/.ssh/authorized_keys)
 
 ufw --force reset
 
