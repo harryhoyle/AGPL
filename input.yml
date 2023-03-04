@@ -4,7 +4,7 @@
   tags: always
   vars:
     defaults:
-      server_name: algo
+      server_name: agpl
       ondemand_cellular: false
       ondemand_wifi: false
       dns_adblocking: false
@@ -37,7 +37,7 @@
                 {% endfor %}
 
               Enter the number of your desired provider
-          register: _algo_provider
+          register: _agpl_provider
           when: provider is undefined
 
         - name: Set facts based on the input
@@ -49,7 +49,7 @@
             prompt: |
               Name the vpn server
               [algo]
-          register: _algo_server_name
+          register: _agpl_server_name
           when:
             - server_name is undefined
             - algo_provider != "local"
@@ -74,7 +74,7 @@
           pause:
             prompt: |
               List the names of any trusted Wi-Fi networks where macOS/iOS clients should not use "Connect On Demand"
-              (e.g., your home network. Comma-separated value, e.g., HomeNet,OfficeWifi,AlgoWiFi)
+              (e.g., your home network. Comma-separated value, e.g., HomeNet,OfficeWifi,agplWiFi)
           register: _ondemand_wifi_exclude
           when:
             - ondemand_wifi_exclude is undefined
@@ -110,8 +110,8 @@
           set_fact:
             algo_server_name: >-
               {% if server_name is defined %}{% set _server = server_name %}
-              {%- elif _algo_server_name.user_input is defined and _algo_server_name.user_input|length > 0 -%}
-              {%- set _server = _algo_server_name.user_input -%}
+              {%- elif _agpl_server_name.user_input is defined and _agpl_server_name.user_input|length > 0 -%}
+              {%- set _server = _agpl_server_name.user_input -%}
               {%- else %}{% set _server = defaults['server_name'] %}{% endif -%}
               {{ _server | regex_replace('(?!\.)(\W|_)', '-') }}
             algo_ondemand_cellular: >-
