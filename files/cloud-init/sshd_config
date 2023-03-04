@@ -1,5 +1,5 @@
 Port {{ ssh_port }}
-AllowGroups algo
+AllowGroups agpl
 PermitRootLogin no
 PasswordAuthentication no
 ChallengeResponseAuthentication no
