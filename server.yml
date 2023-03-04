@@ -75,14 +75,14 @@
                   {% if agpl_provider != "local" %}
                   ansible_ssh_private_key_file: {{ SSH_keys.private }}
                   {% endif %}
-                  algo_provider: {{ agpl_provider }}
-                  algo_server_name: {{ agpl_server_name }}
-                  algo_ondemand_cellular: {{ agpl_ondemand_cellular }}
-                  algo_ondemand_wifi: {{ agpl_ondemand_wifi }}
-                  algo_ondemand_wifi_exclude: {{ agpl_ondemand_wifi_exclude }}
-                  algo_dns_adblocking: {{ agpl_dns_adblocking }}
-                  algo_ssh_tunneling: {{ agpl_ssh_tunneling }}
-                  algo_store_pki: {{ agpl_store_pki }}
+                  agpl_provider: {{ agpl_provider }}
+                  agpl_server_name: {{ agpl_server_name }}
+                  agpl_ondemand_cellular: {{ agpl_ondemand_cellular }}
+                  agpl_ondemand_wifi: {{ agpl_ondemand_wifi }}
+                  agpl_ondemand_wifi_exclude: {{ agpl_ondemand_wifi_exclude }}
+                  agpl_dns_adblocking: {{ agpl_dns_adblocking }}
+                  agpl_ssh_tunneling: {{ agpl_ssh_tunneling }}
+                  agpl_store_pki: {{ agpl_store_pki }}
                   IP_subject_alt_name: {{ IP_subject_alt_name }}
                   ipsec_enabled: {{ ipsec_enabled }}
                   wireguard_enabled: {{ wireguard_enabled }}
