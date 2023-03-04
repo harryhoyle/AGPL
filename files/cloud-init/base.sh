@@ -17,7 +17,7 @@ cat <<EOF >/etc/ssh/sshd_config
 EOF
 
 test -d /home/agpl/.ssh || sudo -u algo mkdir -m 0700 /home/agpl/.ssh
-echo "{{ lookup('file', '{{ SSH_keys.public }}') }}" | (sudo -u algo tee /home/algo/.ssh/authorized_keys && chmod 0600 /home/agpl/.ssh/authorized_keys)
+echo "{{ lookup('file', '{{ SSH_keys.public }}') }}" | (sudo -u agpl tee /home/algo/.ssh/authorized_keys && chmod 0600 /home/agpl/.ssh/authorized_keys)
 
 ufw --force reset
 
