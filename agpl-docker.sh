@@ -11,7 +11,7 @@ usage() {
     retcode="${1:-0}"
     echo "To run agpl from Docker:"
     echo ""
-    echo "docker run --cap-drop=all -it -v <path to configurations>:"${DATA_DIR}" trailofbits/agpl:latest"
+    echo "docker run --cap-drop=all -it -v <path to configurations>:"${DATA_DIR}" harryhoyle/agpl:latest"
     echo ""
     exit ${retcode}
 }
